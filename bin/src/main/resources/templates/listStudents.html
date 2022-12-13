@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="container">
+		<div class="starter-template">
+			<h1>Listado de Alumnos</h1>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>NOMBRE</th>
+						<th>APELLIDO</th>
+						<th>EDAD</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="inma :{lista}">
+						<td th:text="${inma.name}"></td>
+						<td th:text="${inma.surname}"></td>
+						<td th:text="${inma.age}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>
