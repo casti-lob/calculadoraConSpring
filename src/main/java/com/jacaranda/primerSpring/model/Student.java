@@ -4,20 +4,19 @@ import java.util.Objects;
 
 public class Student {
 	private String name;
-	private String surname;
+	private String lastName;
 	private int age;
 	
-	public Student(String name, String surname, int age) {
-		super();
-		this.name = name;
-		this.surname = surname;
-		this.age = age;
+	public Student() {
+	
 	}
 
-	public Student() {
-		super();
-		// TODO Auto-generated constructor stub
+	public Student(String nombre, String apellido, int edad) {
+		this.name = nombre;
+		this.lastName = apellido;
+		this.age = edad;
 	}
+	
 
 	public String getName() {
 		return name;
@@ -27,12 +26,12 @@ public class Student {
 		this.name = name;
 	}
 
-	public String getSurname() {
-		return surname;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setSurname(String surname) {
-		this.surname = surname;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public int getAge() {
@@ -42,11 +41,10 @@ public class Student {
 	public void setAge(int age) {
 		this.age = age;
 	}
-	
-	
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(name, surname);
+		return Objects.hash(lastName, age, name);
 	}
 
 	@Override
@@ -58,8 +56,9 @@ public class Student {
 		if (getClass() != obj.getClass())
 			return false;
 		Student other = (Student) obj;
-		return Objects.equals(name, other.name) && Objects.equals(surname, other.surname);
+		return Objects.equals(lastName, other.lastName) && age == other.age && Objects.equals(name, other.name);
 	}
+	
 	
 	
 }

@@ -11,49 +11,39 @@ import com.jacaranda.primerSpring.model.Student;
 @Service
 public class StudentService {
 	
-	private List<Student> lista;
-
+private List<Student> studentList;
+	
 	public StudentService() {
-		lista = new ArrayList<Student>();
-		lista.add(new Student("jose","castillejo",26));
-		lista.add(new Student("Manolo","Perez",36));
-		lista.add(new Student("Desconocido","Misterio",16));
-	}
-	public List<Student> getStudents(){
-		return lista;
-	}
-	public boolean addStudent(Student e) {
-		return lista.add(e);
-	}
-	public boolean removeStudent(Student o) {
-		return lista.remove(o);
-	}
-	public  Student getStudent(String nombre, String apellido) {
-		Boolean encontrado= false;
-		Student resultado=null;
-		Iterator<Student> iterator = this.lista.iterator();
-		while(iterator.hasNext()&&!encontrado) {
-			resultado=iterator.next();
-			if(resultado.getName().equals(nombre)&& resultado.getSurname().equals(apellido)) {
-				
-				encontrado=true;
-			}
-		}
-		if(encontrado==true)
-			return resultado;
-		else
-			return null;
+		this.studentList = new ArrayList<>();
+		studentList.add(new Student("Inma", "Olias", 25));
+		studentList.add(new Student("Pepe", "Olias", 23));
+		studentList.add(new Student("Marta", "Olias", 20));
+		studentList.add(new Student("Juan", "Olias", 28));
 	}
 	
-	public Boolean updateStudent(String nombre, String apellido, int edad) {
-		Boolean encontrado= false;
-		Student resultado=null;
-		Iterator<Student> iterator = this.lista.iterator();
-		while(iterator.hasNext()&&!encontrado) {
-			resultado=iterator.next();
-			if(resultado.getName().equals(nombre)&& resultado.getSurname().equals(apellido)) {
+	
+	public List<Student> getStudentList() {
+		return studentList;
+	}
+	
+	public void addStudent(Student s) {
+		this.studentList.add(s);
+	}
+	
+	public void removeStudent (Student s) {
+		this.studentList.remove(s);
+	}
+
+	public Boolean get(String nombre, String apellido, int edad) {
+		Boolean encontrado = false;
+		Student resultado = null;
+		
+		Iterator<Student> itr = this.studentList.iterator();
+		while(itr.hasNext() && !encontrado) {
+			resultado = itr.next();
+			if(resultado.getName().equals(nombre) && resultado.getLastName().equals(apellido)) {
 				resultado.setAge(edad);
-				encontrado=true;
+				encontrado = true;
 			}
 		}
 		
