@@ -33,7 +33,22 @@ private List<Student> studentList;
 	public void removeStudent (Student s) {
 		this.studentList.remove(s);
 	}
+	public  Student getStudent(String nombre, String apellido) {
+		Boolean encontrado= false;
+		Student resultado=null;
+		Iterator<Student> iterator = this.studentList.iterator();
+		while(iterator.hasNext()&&!encontrado) {
+			resultado=iterator.next();
+			if(resultado.getName().equals(nombre)&& resultado.getLastName().equals(apellido)) {
 
+				encontrado=true;
+			}
+		}
+		if(encontrado==true)
+			return resultado;
+		else
+			return null;
+	}
 	public Boolean get(String nombre, String apellido, int edad) {
 		Boolean encontrado = false;
 		Student resultado = null;
