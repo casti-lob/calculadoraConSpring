@@ -18,39 +18,53 @@ public class StudentController {
 	@Autowired
 	StudentService repositorio;
 	
-	@GetMapping("student/list")
+	@GetMapping("list")
 	public String listStudent(Model model) {
 		model.addAttribute("list", repositorio.getStudentList());
 		return "listStudent";
 	}
 	
-	@GetMapping("student/add")
+	@GetMapping("add")
 	public String addStudent(Model model) {
 		Student student = new Student();
 		model.addAttribute("newStudent", student);
 		return "addStudent";
 	}
 	
-	@PostMapping("student/addSubmit")
+	@PostMapping("add/submit")
 	public String addSubmit(@ModelAttribute("newStudent") Student student) {
 		repositorio.addStudent(student);
-		return "redirect:/student/list";
+		return "redirect:/list";
 	}
 	
-	@GetMapping("student/delete")
+	@GetMapping("delStudent")
 	public String deleteStudent(Model model, 
 			@RequestParam(name="name",required=false,defaultValue="")String name,
 			@RequestParam(name="lastName",required=false,defaultValue="")String surname
 			
 			) {
 		Student student = repositorio.getStudent(name, surname);
-		model.addAttribute("studentDel", student);
+		model.addAttribute("student", student);
 		return "deleteStudent";
 	}
 	
-	@PostMapping("student/deleteSubmit")
+	@PostMapping("delStudent/submit")
 	public String deleteSubmit(@ModelAttribute("student") Student student) {
 		repositorio.removeStudent(student);
-		return "redirect:/student/list";
+		return "redirect:/list";
+	}
+	
+	@GetMapping("editStudent")
+	public String editStudent(Model model, @RequestParam(name="name", required = false, defaultValue = "")
+	String name, @RequestParam(name="lastName", required = false, defaultValue = "")String surname) {
+		Student student = repositorio.getStudent(name,surname );
+		model.addAttribute("student", student);
+		return "editStudent";
+	}
+	
+	@PostMapping("editStudent/submit")
+	public String editSubmit(@ModelAttribute("student") Student student) {
+		repositorio.editStudent( student.getName(), student.getLastName(), student.getAge());
+		return "redirect:/list";
 	}
 }

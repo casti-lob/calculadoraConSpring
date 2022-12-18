@@ -33,6 +33,11 @@ private List<Student> studentList;
 	public void removeStudent (Student s) {
 		this.studentList.remove(s);
 	}
+	public void editStudent ( String nombre, String apellido, int edad) {
+	
+			
+	}
+	
 	public  Student getStudent(String nombre, String apellido) {
 		Boolean encontrado= false;
 		Student resultado=null;
