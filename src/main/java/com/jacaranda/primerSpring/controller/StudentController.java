@@ -26,6 +26,11 @@ public class StudentController {
 		return "listStudent";
 	}
 	
+	@GetMapping("login")
+	public String loginUser(Model model) {
+		
+		return "login";
+	}
 	@GetMapping("add")
 	public String addStudent(Model model) {
 		Student student = new Student();
@@ -70,7 +75,7 @@ public class StudentController {
 	
 	@PostMapping("editStudent/submit")
 	public String editSubmit(@ModelAttribute("student") Student student) {
-		repositorio.editStudent( student.getName(), student.getLastName(), student.getAge());
+		repositorio.updateStudent(student);
 		return "redirect:/list";
 	}
 }

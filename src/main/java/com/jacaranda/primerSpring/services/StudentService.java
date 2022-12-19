@@ -69,4 +69,16 @@ private List<Student> studentList;
 		
 		return encontrado;
 	}
+	
+	public boolean updateStudent(Student s) {
+		boolean encontrado = false;
+		Student resultado = getStudent(s.getName(), s.getLastName());
+		
+		if(resultado != null) {
+			encontrado = true;
+			resultado.setAge(s.getAge());
+		}
+
+		return encontrado;
+	}
 }

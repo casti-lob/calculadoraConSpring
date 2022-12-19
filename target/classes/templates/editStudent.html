@@ -15,7 +15,7 @@
 				<label class="col-md-4 control-label" for="name">Nombre:</label>
 				<div class="col-md-4">
 					<input id="name" name="name" type="text" class="form-control input-md" 
-					th:field= "*{name}" th:value="${student.name}">
+					th:field= "*{name}" th:value="${student.name}" readonly="readonly">
 				</div>
 			</div>
 
@@ -23,7 +23,7 @@
 				<label class="col-md-4 control-label" for="lastName">Apellido: </label>
 				<div class="col-md-4">
 					<input id="lastName" name="lastName" type="text" class="form-control input-md" 
-					th:field= "*{lastName}" th:value="${student.lastName}">
+					th:field= "*{lastName}" th:value="${student.lastName}" readonly="readonly">
 
 				</div>
 			</div>
